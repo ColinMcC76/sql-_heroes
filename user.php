@@ -31,12 +31,13 @@
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         $output =   "
-                            <h5 class='text-center card-title'>$row[name]</h5>
-                            <p class='text-center offset-2 col-8'>
-                                <a class='my-2 btn btn-warning' href='story_form.php?id=$id'>Update Story</a><br>
-                                $row[about_me]<br><br>
-                                $row[biography]                                   
-                            </p>
+                            <h5 class='text-center display-3'>$row[name]</h5>
+                            <div class='text-center offset-2 col-8'>
+                            <p class='text-center h3'>$row[about_me]</p><br>
+                            $row[biography]                                 
+                            <br>
+                            <a class='my-2 btn btn-warning' href='story_form.php?id=$id'>Update Story</a><br>
+                            </div>
                         ";
         echo $output;
     }
