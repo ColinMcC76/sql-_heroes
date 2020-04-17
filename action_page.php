@@ -43,13 +43,23 @@
         $sql= "DELETE FROM abilities WHERE id='$ability'";
         $conn->query($sql);
         header("Location: ./user.php?id=$hero_id");
-        
+    }
+    if ($method == 'delete_friend') {
 
+        // echo 'delete';
+        $hero2= $_GET['hero2_id'];
+        $sql = "UPDATE relationships SET type_id='2' WHERE hero1_id=$hero_id AND hero2_id = $hero2";
+        $conn->query($sql);
+        header("Location: ./user.php?id=$hero_id");
 
+    }
+    if ($method == 'add_friend') {
 
-        // $sql = "INSERT INTO abilities (ability) VALUES ('$val')";
-        // $sql = "UPDATE heroes SET biography='$val' WHERE id=$hero_id";
-        // $conn->query($sql);
-        // header("Location: ./user.php?id=$hero_id");
+        // echo 'delete';
+        $hero2= $_GET['hero2_id'];
+        $sql = "UPDATE relationships SET type_id='1' WHERE hero1_id=$hero_id AND hero2_id = $hero2";
+        $conn->query($sql);
+        header("Location: ./user.php?id=$hero_id");
+
     }
     ?>
