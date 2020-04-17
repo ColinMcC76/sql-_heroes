@@ -33,8 +33,8 @@
         $output =   "
                             <h5 class='text-center card-title'>$row[name]</h5>
                             <p class='text-center offset-2 col-8'>
-                                <a class='btn btn-warning' href='story_form.php?id=$id'>Update Story</a><br>
-                                $row[about_me]<br> 
+                                <a class='my-2 btn btn-warning' href='story_form.php?id=$id'>Update Story</a><br>
+                                $row[about_me]<br><br>
                                 $row[biography]                                   
                             </p>
                         ";
@@ -50,7 +50,7 @@
     ";
     $setup =
         "<a class='offset-5 col-2 btn btn-dark' href='./abilityForm.php?id=$id'>add ability</a>
-        <div class='d-flex justify-content-center text-center'>
+        <div class='pt-2 d-flex justify-content-center text-center'>
             <h5>
                 Abilities
             </h5>
@@ -60,7 +60,7 @@
     while ($row = $result->fetch_assoc()) {
         // echo $row['id'];
         $output =   "
-        <div class='d-flex justify-content-around'>
+        <div class='pt-2 d-flex justify-content-around'>
         $row[ability] <a id='$row[id]'class='btn btn-danger' href='action_page.php?method=delete_ability&&id=$id&&ability=$row[ability_id]'>X</a>           
         </div>
         ";
@@ -75,16 +75,17 @@
     WHERE hero1_id=$id and type_id=1";
     $result = $conn->query($sql);
     $setup =
-        '<div class="d-flex justify-content-center text-center">
-                <h5>
-                    Friends
-                </h5>
-            </div>';
+        "<div class='d-flex justify-content-center text-center'>
+        <h5>
+            Friends
+        </h5>
+    </div>";
     echo $setup;
     while ($row = $result->fetch_assoc()) {
         $output =   "
-        <div class='d-flex justify-content-center text-center'>
-        $row[name]            
+        <div class='pt-2 d-flex justify-content-around text-center'>
+        $row[name]      
+        <a class='btn btn-dark' href='action_page.php?method=delete_friend&&id=$id&&hero2_id=$row[hero2_id]'>Make enemy</a>
         </div>
         ";
         echo $output;
@@ -106,8 +107,9 @@
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         $output =   "
-            <div class='d-flex justify-content-center text-center'>
-            $row[name]            
+            <div class='py-2 d-flex justify-content-around text-center'>
+            $row[name]   
+            <a class='btn btn-dark' href='action_page.php?method=add_friend&&id=$id&&hero2_id=$row[hero2_id]'>Make Friend</a>
             </div>
             ";
         echo $output;
