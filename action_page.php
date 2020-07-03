@@ -50,6 +50,8 @@
         $hero2= $_GET['hero2_id'];
         $sql = "UPDATE relationships SET type_id='2' WHERE hero1_id=$hero_id AND hero2_id = $hero2";
         $conn->query($sql);
+        $sql = "UPDATE relationships SET type_id='2' WHERE hero1_id=$hero2 AND hero2_id = $hero_id";
+        $conn->query($sql);
         header("Location: ./user.php?id=$hero_id");
 
     }
@@ -58,6 +60,8 @@
         // echo 'delete';
         $hero2= $_GET['hero2_id'];
         $sql = "UPDATE relationships SET type_id='1' WHERE hero1_id=$hero_id AND hero2_id = $hero2";
+        $conn->query($sql);
+        $sql = "UPDATE relationships SET type_id='1' WHERE hero1_id=$hero2 AND hero2_id = $hero_id";
         $conn->query($sql);
         header("Location: ./user.php?id=$hero_id");
 
